@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <style>
+    a {
+      transition: all 0.8s;
+      margin: 5px;
+      padding: 10px;
+      text-decoration: none;
+      display: inline-block;
+      background-color: #ececed;
+      height: 40px;
+      width: 100%;;
+      line-height:50px;
+      text-align: center;
+      color:black;
+    }
+    a:hover {
+      border: 2px solid lightblue;
+    }
+    .monospace {
+font-family: "Lucida Console", Courier, monospace;
+}
+    </style>
+</head>
+<body>
+    <a href = "#" id="printpagelink" class="monospace" onclick="generatePDF()"><font size="4">Export Notes</font></a>
+    <ul></ul>
+    
+    <script src ="node_modules/jspdf/dist/jspdf.min.js"></script>
+    <script src ="node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        const electron = require('electron');
+        const {ipcRenderer} = electron;
+        const ul = document.querySelector('ul');
+
+        ipcRenderer.on('senditem',function(e,item){
+            const li = document.createElement('li');
+            const itemText = document.createTextNode(item);
+            li.appendChild(itemText);
+            ul.appendChild(li);
+        });
+        ul.addEventListener('dblclick',removeitem);
+        function removeitem(e){
+            e.target.remove();
+        }
+        function generatePDF(){
+            var printButton = document.getElementById("printpagelink");
+        //Set the print button visibility to 'hidden' 
+        printButton.style.visibility = 'hidden';
+        window.print()
+        //Set the print button to 'visible' again 
+        //[Delete this line if you want it to stay hidden after printing]
+        printButton.style.visibility = 'visible';
+        }
+    </script>
+</body>
+</html>

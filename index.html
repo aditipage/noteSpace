@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>IPC app</title>
+    <style>
+    .sansserif {
+  font-family: Arial, Helvetica, sans-serif;
+}
+    .monospace {
+font-family: "Lucida Console", Courier, monospace;
+}
+button {
+  background: url(file.jpeg);
+  width:70px;
+  height:70px;
+}
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+    </style>
+</head>
+<body>
+    <div class = "monospace" style = "background:#f06b0f; color:white; padding:8px;"><center><font size="7">NOTESPACE</font>
+      <br><font size="5">Notemaking made easy!</font></center></div>
+      <br><br><br><br><br><br>
+    <h4 class="sansserif"><center>Select file:</center></h4>
+    <h1>
+      <center>  <button id="errorbtn" ></button> </center>
+        <!--<button id="openbtn">Open a file</button> -->
+    </h1>
+    <script>
+        require('./index.js');
+    </script>
+
+</body>
+</html>
